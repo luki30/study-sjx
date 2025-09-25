@@ -1,0 +1,41 @@
+# ?????
+server:
+  port: 8080
+  servlet:
+    context-path: /library
+
+# ?????
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/library_db?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      # HikariCP ?????
+      connection-timeout: 20000
+      maximum-pool-size: 10
+      idle-timeout: 300000
+      max-lifetime: 1800000
+  jpa:
+    # JPA ??
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  mvc:
+    # JSP ????
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+# Swagger 配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  packages-to-scan: com.example.library.controller
+  api-docs:
+    enabled: true
